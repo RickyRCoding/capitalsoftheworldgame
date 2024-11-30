@@ -8,7 +8,7 @@ export default function Home() {
       <div className="space"></div>
       <h3>You think that you&apos;re that one nerdy guy...</h3>
       <div className="space"></div>
-      <h3>who knows the capital of every single coutry known.</h3>
+      <h3>who knows the capital of every single country known.</h3>
       <div className="space"></div>
       <h3
         style={{
