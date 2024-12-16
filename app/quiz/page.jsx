@@ -10,15 +10,14 @@ export default function Typing() {
   const textRef = useRef();
   const [goods, setGoods] = useState(0);
   const [isDone, setIsDone] = useState(false);
+  const [show, setShow] = useState(false);
+  const [changeis, setChangeIs] = useState();
 
   const [rad, setRad] = useState(0);
 
   useEffect(() => {
     setRad(Math.floor(Math.random() * 195) + 1);
   }, [counter]);
-
-  const eqSet = (xs, ys) =>
-    xs.size === ys.size && [...xs].every((x) => ys.has(x));
 
   const handleValidate = () => {
     let g = cow[rad][1].trim().split(" ");
@@ -28,6 +27,7 @@ export default function Typing() {
         setGoods((oldgoods) => {
           return oldgoods + 1;
         });
+        setChangeIs(true);
         break;
       }
     }
@@ -36,6 +36,12 @@ export default function Typing() {
       return oldcounter + 1;
     });
     textRef.current.value = "";
+
+    setShow(true);
+    setTimeout(() => {
+      setShow(false);
+      setChangeIs(false);
+    }, 1250);
   };
 
   return (
@@ -60,14 +66,27 @@ export default function Typing() {
             What is the capital of <u>{cow[rad][0]}</u>?
           </h1>
           <input ref={textRef} type="text" />
+          <br />
+          {show && (
+            <>
+              {changeis ? (
+                <p className="correct">Good Job!</p>
+              ) : (
+                <p className="incorrect">Oops!</p>
+              )}
+            </>
+          )}
+
           {counter > 0 ? (
-            <h4>
-              BTW: Out of the {counter} questions you ansred, you got {goods}{" "}
-              right.
+            <h4 style={{ fontSize: "1.5rem" }}>
+              BTW: You got{" "}
+              <u>
+                {goods}/{counter}
+              </u>{" "}
+              questions right.
             </h4>
           ) : (
             <>
-              <br />
               <br />
               <br />
             </>
@@ -75,6 +94,7 @@ export default function Typing() {
           <button className="button" onClick={handleValidate}>
             Validate
           </button>
+
           {counter > 0 && (
             <>
               <br />

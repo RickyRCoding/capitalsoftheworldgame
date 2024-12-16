@@ -80,7 +80,6 @@ input {
 }
 
 .mb {
-  margin-top: 2rem;
   border: 0.6rem solid #72bbff;
   border-radius: 1rem;
   padding: 1rem;
@@ -88,7 +87,6 @@ input {
 }
 
 .mb:hover {
-  margin-top: 2rem;
   border: 0.6rem solid #72bbff;
   border-radius: 1rem;
   padding: 1rem;
@@ -96,5 +94,19 @@ input {
 }
 
 h4 {
-  padding: 3rem
+  padding: 2rem
+}
+
+p {
+  font-size: 1.4rem;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: red;
+  font-weight: bold;
 }
